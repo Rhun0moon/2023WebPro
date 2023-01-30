@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23.01.26 목록 태그(nav)</title>
+    <style>
+        div#page{
+            width: 1000px;
+            /* 좌, 우가 auto이면 가운데 정렬 */
+            margin: 0 auto;
+        }
+        #nav>ul{
+            border: 0px solid blueviolet;
+            padding: 0px;
+            /* height: 80px; */
+            overflow: hidden; /* 높이가 없으니까 하위요소에 맞게 크기를 조정함. */
+            width: 1000px;
+        }
+        #nav li{
+            border-top: 1px solid lightblue;
+            border-bottom: 1px solid lightcoral;
+            border-left: 1px solid lightgreen;
+            border-right: 1px solid lightseagreen;
+            list-style: none;
+            width: 200px; height: 60px;
+            /* display: inline-block; 블럭과 인라인의 성질을 모두 가짐, 하위브라우저에서는 적용안됨 */
+            display: block; /* 블럭으로 변경 */
+            float: left; /* 띄운다 -> 부모요소랑 크기로 문제가 생긴다 */
+            box-sizing: border-box; /* 하나의 width + border = 202px를 200px로 맞춰줌 */
+            text-align: center; /* 가운데 정렬 */
+            line-height: 50px; /* 높이 정렬 */
+        }
+        #nav li:hover{
+            background-color: lightsalmon;
+            border-bottom: 5px solid red;
+        }
+        h1{
+            text-align: center;
+            width: 1000px;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <div id="head">
+            <h1>홍길동이의 홈페이지</h1>
+            <div id="nav">
+                <ul>
+                    <li>home</li>
+                    <li>profile</li>
+                    <li>gallery</li>
+                    <li>leture</li>
+                    <li>board</li>
+                </ul>
+            </div>
+        </div>
+        <div id="content">
+            <p>
+                건물 사이에 피어난 장미 제발 살아남아 줬으면 꺾이지 마 잘 자라줘
+                온몸을 덮고 있는 가시 얼마나 힘이 들었으면 견뎌내줘서 고마워
+                예쁘지 않은 꽃은 다들 골라내고 잘라내
+                예쁘면 또 예쁜 대로 꺾어 언젠가는 시들고 왜 내버려 두지를 못해
+                그냥 가던 길 좀 가 어렵게 나왔잖아 악착같이 살잖아, hey
+                나는 건물 사이에 피어난 장미 (Oh-oh, oh-oh)
+                삭막한 이 도시가 아름답게 물들 때까지 (Woah-oh-oh)
+                고갤 들고 버틸게 끝까지 (Oh-oh, oh-oh)
+                모두가 내 향길 맡고 취해 웃을 때까지 (웃을 때까지)
+            </p>
+        </div>
+    </div>
+    
+</body>
+</html>

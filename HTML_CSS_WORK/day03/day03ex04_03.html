@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23.01.17, 검색기능(이름 검색, 부분검색불가능)</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>사원 목록</h1>
+        <p>검색<input type="text" id="keyWord"><button id="searchBtn">검색</button></p>
+        <table class="table table-dark table-hover">
+            <thead>
+                <tr align="center">
+                    <th><input type="checkbox" id="allCheck"></th>
+                    <th>번호</th>
+                    <th>사진</th>
+                    <th>사원명</th>
+                    <th>부서</th>
+                    <th>직급</th>
+                    <th>수정</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody id="rows_area">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Ajax 기법을 이용해서 비동기로 서버에서 data를 받아오는 부분
+        var personList = [
+            {
+                "no": 1, 
+                "img": "./img/img1.jpg", 
+                "name": "김뫄뫄", 
+                "dept": "홍보부", 
+                "position": "인턴"
+            },
+            {
+                "no": 2, 
+                "img": "./img/img2.jpg", 
+                "name": "홍길동", 
+                "dept": "개발부", 
+                "position": "과장"
+            },
+            {
+                "no": 3, 
+                "img": "./img/img3.jpeg", 
+                "name": "고길동", 
+                "dept": "협력부", 
+                "position": "사원"
+            },
+            {
+                "no": 4, 
+                "img": "./img/img4.jpeg", 
+                "name": "정뫄뫄", 
+                "dept": "인사부", 
+                "position": "대리"
+            },
+            {
+                "no": 5, 
+                "img": "./img/img5.jpg", 
+                "name": "박대박", 
+                "dept": "개발부", 
+                "position": "부장"
+            },
+            {
+                "no": 6, 
+                "img": "./img/img6.jpg", 
+                "name": "김이박", 
+                "dept": "영업부", 
+                "position": "사원"
+            }
+        ]  
+
+        // var rowTempStr = document.querySelector("#rowTemp").innerHTML;
+        // console.log(rowTempStr)
+
+        var newHtml = "";
+        // console.log(tempData);
+        for(var i=0; i<personList.length; i++){
+            var person = personList[i];
+            var tempData = `
+            <tr align="center">
+                <td><input type="checkbox" class="check" /> </td>
+                <td>${person.no}</td>
+                <td><img src="${person.img}" width="100" /></td>
+                <td>${person.name}</td>
+                <td>${person.dept}</td>
+                <td>${person.position}</td>
+                <td><input type="button" value="수정" /></td>
+                <td><input type="button" value="삭제" /></td>
+            </tr>
+            `;
+            newHtml += tempData;
+        }
+        // console.log(newHtml);
+        document.querySelector("#rows_area").innerHTML = newHtml;
+
+
+        // 검색 기능 구현 (의사 코드)
+        // 1 searchBtn을 클릭하면 keyWord의 내용을 읽어온다.
+        // 2 keyword의 값과 같은 요소를 personList에서 찾는다.
+        // 3 그 결과를 목록에 출력한다.
+
+        var searchBtn = document.querySelector("#searchBtn");
+        var keyWordInput = document.querySelector("#keyWord");
+
+        searchBtn.onclick = function(event){
+            // console.log("hello"); 성공
+            var newPersonList = [];
+            var keyword = keyWordInput.value;
+            for(var i=0; i<personList.length; i++){
+                if(personList[i].name === keyword){
+                    newPersonList.push(personList[i]);
+                    // console.log(newPersonList); 성공
+                }
+            }
+
+            var newHtml = "";
+            for(var i=0; i<newPersonList.length; i++){
+                var person = newPersonList[i];
+                var tempData = `
+                <tr align="center">
+                    <td><input type="checkbox" class="check" /> </td>
+                    <td>${person.no}</td>
+                    <td><img src="${person.img}" width="100" /></td>
+                    <td>${person.name}</td>
+                    <td>${person.dept}</td>
+                    <td>${person.position}</td>
+                    <td><input type="button" value="수정" /></td>
+                    <td><input type="button" value="삭제" /></td>
+                </tr>
+                `;
+                newHtml += tempData;
+            }
+            console.log(newHtml);
+            document.querySelector("#rows_area").innerHTML = newHtml;
+        }// end of searchBtn
+    </script>
+</body>
+</html>

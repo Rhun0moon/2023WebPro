@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2023.01.25</title>
+</head>
+<body>
+    <ul>
+        <li>오징어</li>
+        <li>꼴뚜기</li>
+        <li>대구</li>
+        <li>명태</li>
+        <li>거북이</li>
+    </ul>
+    <script>
+        // 자바스크립트에는 char 타입이 없다.
+        // 홀따옴표 쌍따옴표 모두 문자열로 사용된다.
+
+        var colors = ['red', 'green', 'blue', 'orange', 'pink']
+        var lis = document.getElementsByTagName("ul")[0].getElementsByTagName("li");
+        console.dir(lis);
+        for(var i=0; i<lis.length; i++){
+            // console.log(lis[i]);
+            // 각각의 li 요소의 배경에 colors의 색상을 적용한다.
+            //lis[i].style.backgroundColor = colors[i];
+
+            // i 번째 요소를 클릭하면 colors의 i 번째 색상이 적용되도록 한다.
+            // 해결 힌트 : 자바스크립트 객체는 캡슐화 안된다.
+            // 필요한 속성을 객체에 임의로 추가 가능하다.
+            lis[i].i = i;
+            lis[i].onclick = function(event){
+                console.log(this.i);
+                this.style.backgroundColor = colors[this.i];
+            }
+        }
+    </script>
+</body>
+</html>

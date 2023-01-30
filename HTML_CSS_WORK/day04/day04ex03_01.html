@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* input 중에 type이 submit인 것을 제외하기위해  */
+        #form1 input[type=text], #form1 textarea{
+            border: none;
+            border-bottom: 4px solid lightblue;
+            background-color: lightyellow;
+            width: 400px;
+        }
+    </style>
+
+    <script>
+        // function으로 선언하면 최상위인 window의 멤버가 된다.
+        function ValiditeForm(form){
+            // form의 기본은 페이지 전환이다.
+            // 이벤트의 기본 기능을 일시중지할 수 있다.
+            // 이벤트는 이벤트 핸들러 함수에서 자동 생성된다.
+            event.preventDefault(); // 일시중지
+
+            // 이벤트 핸들러가 아니다. this == window
+            // console.log(this == form); // false
+            // console.log(this == window); //true
+
+            if(form.subject.value == ""){
+                alert("제목을 입력하세요.");
+                form.subject.focus();
+                return false;
+            }
+            if(form.writer.value == ""){
+                alert("이름을 입력하세요.");
+                form.writer.focus();
+                return false;
+            }
+            if(form.writer.value.length < 2){
+                alert("이름을 2 글자 이상 입력하세요.");
+                form.writer.focus();
+                return false;
+            }
+
+            form.action = "https://www.notion.so/95118d2af86f40eea1329d4abaa60f30";
+            form.submit();
+        }
+
+        /* 
+         var으로 선언해도 동일하다.
+        var ValiditeForm2 = function(form){
+            console.log("전송 버튼을 눌렀다.");
+        }
+        */
+    </script>
+
+</head>
+<body>
+    <h1>글쓰기</h1>
+    <form action="" id="form1" onsubmit="javascript:ValiditeForm(this)">
+        <table>
+            <tr>
+                <th>제목</th>
+                <td><input type="text" name="subject"></td>
+            </tr>
+            <tr>
+                <th>이름</th>
+                <td><input type="text" name="writer"></td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td><textarea name="content" cols="30" rows="10"></textarea></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td><input type="submit" value="저장"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

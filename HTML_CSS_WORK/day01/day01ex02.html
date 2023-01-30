@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2023.01.25</title>
+</head>
+<body>
+    <button id="clickBtn"> DAY01 </button>
+    <h1>Hello World</h1>
+
+    <!-- 외부 선언 방식(External) - 외부 .js 파일로 구현 -->
+    <!--script src="./day01ex02.js"></script-->
+
+    <!-- 내부 선언 방식(Internal) - 아래 -->
+    <script>
+        // id 속성이 clickBtn인 요소의 DOM 셀렉트
+        var clickBtn = document.getElementById("clickBtn");
+        // id 값이 같은 요소는 없다.
+        var heading = document.getElementById("heading");
+        var aa = document.getElementsByClassName("aa");
+
+        // DOM이 선택되었는가?
+        console.log(clickBtn);
+        console.dir(clickBtn);
+
+        // 선택된 DOM요소에 이벤트 핸들러 걸기
+        clickBtn.onclick = function(event){
+            // 클릭 이벤트가 발생하면 이벤트를 콘솔에 출력
+            // console.dir(event);
+            console.dir(document);
+            document.bgColor = "yellow";
+            document.title = "hello";
+            console.log(clickBtn);
+            clickBtn.style.backgroundColor = "red";
+        }
+
+        // 문서의 거의 모든 요소가 객체가 될 수 있다.
+        // 함수를 변수에 참조시킨다.
+        // 함수를 배열에도 담을 수 있다.
+        // 함수를 다른 함수의 인자로 사용할 수 있다. (callback 함수)
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0; margin: 0;
+        }
+        div.container div{
+            padding: 3px; margin: 3px;
+            border: 1px solid lightcoral;
+            border-radius: 7px;
+            width: 900px;
+            overflow: hidden; /*height: 100px;*/ 
+        }
+        .header nav li{
+            float: left;
+            width: 150px; height: 50px;
+            border: 1px solid lightslategray;
+            list-style: none;
+        }
+        div.middle div{
+            width: 150px; height: 200px;
+            float: left;
+        }
+        div.middle div.center{ 
+            width: 550px; 
+        }
+        div.center div{ 
+            width: 260px; height: 80px;
+        }
+        div.center div:nth-child(1){ 
+            width: 530px; 
+        }
+        div.footer{
+            clear: both;
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>홍길동이의 코딩 교실</h1>
+            <nav>
+                <ul>
+                    <li>HOME</li>
+                    <li>PROFILE</li>
+                    <li>GALLERY</li>
+                    <li>LECTURE</li>
+                    <li>BOARD</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="middle">
+            <div class="left">
+
+            </div>
+            <div class="center">
+                <div>banner</div>
+                <div>section1</div>
+                <div>section2</div>
+            </div>
+            <div class="right">
+
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </div>
+</body>
+</html>

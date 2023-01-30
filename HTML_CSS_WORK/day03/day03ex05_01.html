@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23.01.27, Todo List 만들기 (HTML, CSS만 적용)</title>
+    <style>
+        ul{ padding: 5px;}
+        ul li{ 
+            list-style: none;
+            margin: 10px;
+        }
+        li span{ 
+            display: inline-block; 
+            width: 200px; height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 주말 과제 : HTNL, CSS, JS를 이용해서 TODO-LIST 구현 -->
+    <div id="container">
+        <h1>할 일 목록</h1>
+        <p>
+            할 일 <input type="text" id="newWork">
+            <button id="addBtn">추가</button>
+        </p>
+        <div id="content">
+            <ul>
+                <li>
+                    <input type="checkbox">
+                    <span>| 주말과제하기 |</span>
+                    <button>삭제</button>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <span>| <del>주말과제하기</del> |</span>
+                    <button>삭제</button>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <span>| 청소하기 |</span>
+                    <button>삭제</button>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <span>| <del>배운거 복습</del> |</span>
+                    <button>삭제</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

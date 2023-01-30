@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2023.01.26</title>
+    <style>
+        #box{
+            width: 100px; height: 100px;
+            background-color: yellow;
+            border: 2px solid red;
+            /* left는 요소가 레이어여야 적용된다. position */
+            position: relative;
+            left: 0px; top: 0px;
+            transition: all 0.5s  cubic-bezier(1,-0.48,0,1.73);
+            /* transition: all 0.5s ease-in; transition: left 0.5s, top o.5s; */
+        }
+        #btnGroup{
+            width: 250px;
+        }
+        /* #btnGroup의 자식 요소 중 button*/
+        #btnGroup button{
+            width: 100px; height: 80px;
+            margin: 5px;
+        }
+        button[data-pos-y="200"]{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="btnGroup">
+        <!-- ver1 data-x 일 경우-->
+        <button data-pos-x="0" data-pos-y="0" class="playBtn">좌상(0,0)</button>
+        <button data-pos-x="200" data-pos-y="0" class="playBtn">우상(200,0)</button>
+        <button data-pos-x="0" data-pos-y="200" class="playBtn">좌하(0,200)</button>
+        <button data-pos-x="200" data-pos-y="200" class="playBtn">우하(200,200)</button>
+    </div>
+    <div id="box">Box</div>
+    
+    <script>
+        var colors = ['blue', 'orange', 'brown', 'pink']
+        var playBtnArr =document.getElementsByClassName("playBtn");
+        var box = document.getElementById("box");
+
+        console.log(playBtnArr);
+        for(var cnt=0; cnt<playBtnArr.length; cnt++){
+            playBtnArr[cnt].color = colors[cnt];
+            playBtnArr[cnt].onclick = function(event){
+                // ver1 this.dataset.x가 와야한다.
+                box.style.left = this.dataset.posX+"px";
+                box.style.top = this.dataset.posY+"px";
+                document.body.style.backgroundColor = this.color;
+            }
+        }
+    </script>
+</body>
+</html>

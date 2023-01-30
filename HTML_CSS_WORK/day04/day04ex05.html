@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{padding: 1; margin: 1;}
+        div.container{
+            width: 1000px; height: 700px;
+            border: 1px solid lightblue;
+        }
+        div.container div{
+            padding: 2px; margin: 2px;
+            border: 1px solid gray;
+            border-radius: 7px;
+            overflow: hidden; /*height: 100px;*/ 
+        }
+
+        /* top */
+        .top nav li{
+            float: left;
+            width: 185px; height: 30px;
+            background-color: lightgrey;
+            list-style: none;
+            margin: 1px;
+        }
+
+        /* middle */
+        div.middle{ height: 450px; }
+        div.middle > div{
+            width: 285px; height:440px;
+            float: left;
+            text-align: center;
+        }
+        div.middle > div.center{ 
+            width: 385px; 
+        }
+        /* middle - left */
+        div.left div.article-section{
+            width: 270px; height:430px;
+        }
+        div.left div.article-section div.article{
+            width:260px; height: 30px;
+            background-color: lightsalmon;
+        }
+        /* middle - center */
+        div.center div.article-main{
+            width: 370px; height: 30px;
+            background-color: lightgoldenrodyellow;
+            margin-top: 10px;
+        }
+        div.center div.article-sub{
+            width: 370px; height: 130px;
+            background-color: lightseagreen;
+            margin-bottom: 10px;
+        }
+        /* middle - right */
+        div.right div.article-main{
+            width: 270px; height: 30px;
+            background-color: lightcyan;
+            margin-top: 10px;
+        }
+        div.right div.article-sub{
+            width: 270px; height: 130px;
+            background-color: aquamarine;
+        }
+
+        /* footer */
+        div.footer{
+            height: 100px;
+            text-align: center;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top">
+            <div class="header">
+                <h1>Welcome to My Homepasge</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li>가나다</li>
+                    <li>가나다</li>
+                    <li>가나다</li>
+                    <li>가나다</li>
+                    <li>가나다</li>
+                </ul>
+            </nav>
+        </div>
+        <div class="middle">
+            <div class="left">
+                <div class="article-section">
+                    <div class="article">Stylessheet1</div>
+                    <div class="article">Stylessheet2</div>
+                    <div class="article">Stylessheet3</div>
+                    <div class="article">Stylessheet4</div>
+                    <div class="article">No Stylessheet</div>
+                </div>
+            </div>
+            <div class="center">
+                <div class="article-main">Same Page Differnet Stylessheets</div>
+                <div class="article-sub">동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세 남산위에 저 소나무 철갑을 두른듯 바람서리 불변함은 우리 기상일세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세</div>
+                <div class="article-main">No Styles</div>
+                <div class="article-sub">동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세 남산위에 저 소나무 철갑을 두른듯 바람서리 불변함은 우리 기상일세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세</div>
+            </div>
+            <div class="right">
+                <div class="article-main">Side-Bar</div>
+                <div class="article-sub">동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세 남산위에 저 소나무 철갑을 두른듯 바람서리 불변함은 우리 기상일세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세</div>
+            </div>
+        </div>
+        <div class="footer">동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세 남산위에 저 소나무 철갑을 두른듯 바람서리 불변함은 우리 기상일세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세 남산위에 저 소나무 철갑을 두른듯 바람서리 불변함은 우리 기상일세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세</div>
+    </div>
+</body>
+</html>
