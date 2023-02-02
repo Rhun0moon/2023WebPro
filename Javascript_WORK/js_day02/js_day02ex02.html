@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 변수의 사용 범위</title>
+</head>
+<body>
+    <script>
+        // var 의 범위는 함수 단위
+        var count = 0;
+        var test00 = 0;
+
+        function addCount(){
+            // 함수에서 var로 선언하면 함수 범위에서만 사용
+            var count = 0; 
+            count = count+1;
+            window.count = 100; // 함수 밖의 count를 의미
+            console.log(count); // 함수 안의 count
+
+            // 만약 var를 생략할 경우 window의 필드가 된다.
+            test00 = 100;
+            console.log(test00);
+        }
+
+        addCount();
+        console.log(count); // 함수 밖의 count
+        console.log(test00); 
+    </script>
+</body>
+</html>
