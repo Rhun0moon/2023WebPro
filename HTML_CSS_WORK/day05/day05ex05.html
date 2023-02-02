@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>룰루랄라 홈페이지 만들기 대작전</h1>
+    <hr>
+    <div id="box">
+        <div class="messege"></div>
+        <button id="leftBtn"></button>
+        <button id="rightBtn"></button>
+        <ul class="imageList"></ul>
+    </div>
+    <script>
+        let boxUl = document.querySelector("#box>ul");
+        let boxList = [];
+        let leftBtn = document.querySelector("#leftBtn");
+        let rightBtn = document.querySelector("#rightBtn");
+        let message = document.querySelector("#box > .message");
+
+        let imgs = ['img1', 'img2', 'img3', 'img4', 'img5'];
+        let imageListUl = document.querySelector(".imageList");
+        imgs.forEach(function(item, index) {
+            var newLi = document.createElement("li");
+            newLi.innerHTML = `<img src="./img/${imgs[index]}.jpeg"/>`;
+            imageListUl.appendChild(newLi);
+        });        
+    </script>
+</body>
+</html>

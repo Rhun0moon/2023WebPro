@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #slider{
+            width: 550px;
+        }
+        #slider > button, #slider > #box{
+            float: left;
+            padding-left: 2px;
+        }
+        #slider > button{
+            width: 30px;
+        }
+        #slider > ul{
+            margin-left: 40px;
+        }
+        #slider #lists{
+            position: relative;
+            transition: left .5s;
+            left: 0px; /* transition 적용은 초기값이 있어야 한다. */
+        }
+        #box {
+            width: 410px;
+            border: 1px solid green;
+            overflow: hidden;
+        }
+        #lists{
+            border: 1px solid black;
+            padding: 0px; margin: 0px;
+            width: 2000px;
+        }
+        #lists > li{
+            border: 1px solid red;
+            display: inline-block;
+            list-style: none;
+            width: 80px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>홍길동이 홈페이지</h1>
+    <hr>
+    <div id="slider">
+        <button id="leftBtn">left</button>
+        <div id="box">
+            <ul id="lists"></ul>
+        </div>
+        <button id="rightBtn">right</button>
+    </div>
+
+    <script>
+        var itemNames = ['아메리카노', '연유라떼', '모카라떼', '바닐라라떼', '카페라떼', 'item11', 'item12', 'item13', 'item14', 'item15', 'item16', 'item17', 'item18', 'item19', 'item20'];
+        var slider = document.getElementById("slider");
+        var lists = document.getElementById("lists");
+        var leftBtn = document.getElementById("leftBtn");
+        var rightBtn = document.getElementById("rightBtn");
+
+        itemNames.forEach(function(item, index, arr){
+            console.log(item, index);
+            var newLi = document.createElement("li");
+            newLi.innerHTML = itemNames[index];
+            newLi.className = "item";
+            lists.appendChild(newLi);
+        });
+
+        var x = 0;
+        leftBtn.onclick = function(event){
+            if(x >= 0){ 
+                alert("처음입니다.");
+                return false; 
+            }
+            x += 82.5;
+            lists.style.left = x+"px";
+        }
+        rightBtn.onclick = function(event){
+            if(x <= -820){ 
+                alert("마지막입니다.");
+                return false; 
+            }
+            x -= 82.5;
+            lists.style.left = x+"px";
+        }
+    </script>
+</body>
+</html>

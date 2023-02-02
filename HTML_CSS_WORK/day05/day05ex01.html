@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            border: 1px solid blue;
+            width: 300px;
+            height: 300px;
+            /*transform: rotate(45deg);*/
+            position: relative;
+            left: -100px;
+            transition: transform .5s;
+        }
+        #box > div {
+            border: 0px solid red;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            left: 100px;
+            background-color: aqua;
+            background-image: url("img/img.jpg");
+            background-size: 400px 400px;
+            /*산리오 background-position: -75px 0px; */
+            background-position: -75px 0px;
+        }
+        #box > div:nth-child(2) {
+            -ms-transform: rotate(90deg); /* IE 9 */
+            -ms-transform-origin: center 150px; /* IE 9 */
+            transform: rotate(90deg);
+            transform-origin: center 150px;
+            background-color: beige;
+            /*산리오 background-position: -225px -10px; */
+            background-position: -225px -10px;
+        }
+        #box > div:nth-child(3) {
+            -ms-transform: rotate(180deg);
+            -ms-transform-origin: center 150px;
+            transform: rotate(180deg);
+            transform-origin: center 150px;
+            background-color: pink;
+            /*산리오 background-position: -75px -140px; */
+            background-position: -75px -140px;
+        }
+        #box > div:nth-child(4) {
+            -ms-transform: rotate(270deg);
+            -ms-transform-origin: center 150px;
+            transform: rotate(270deg);
+            transform-origin: center 150px;
+            background-color: coral;
+            /*산리오 background-position: -225px -280px; */
+            background-position: -225px -280px;
+        }
+        #slider{
+            border: 1px solid rebeccapurple;
+            width: 100px; height: 100px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="rotateBtn">Rotate</button>
+    </div>
+    <div id="slider">
+        <div id="box">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+        </div>
+    </div>
+
+    <script>
+        var rotateBtn = document.getElementById("rotateBtn");
+        var box = document.getElementById("box");
+        var cnt = 0;
+        var angle = 0;
+
+        rotateBtn.onclick = function(event){
+            cnt++;
+            angle = cnt * -90;
+            console.log(cnt);
+            box.style.transform = "rotate("+angle+"deg)";
+        }
+    </script>
+</body>
+</html>

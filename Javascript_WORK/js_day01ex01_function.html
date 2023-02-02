@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 자바스크립트 함수의 특징
+        // this === window 
+        // 전역에서는 window가 this 이다.
+        // console.log(this === window);
+
+        // var 혹은 fuction으로 선언하면 window의 멤버가 된다.
+        var person1 = "김길동";
+        var person2 = "이길동";
+
+        // let은 멤버 아님.
+        let person3 = "박길동";
+        let person4 = "홍길동";
+
+        console.dir(window.person1); //김길동
+        console.dir(window.person2); //이길동
+        console.dir(window.person3); //undefined
+        console.dir(window.person4); //undefined
+        
+        for(var i=1; i<=4; i++){
+            //document.write(window['person' + i] + "<br/>");
+            document.write(this['person' + i] + "<br/>");
+
+        }
+
+        console.log(window);
+        </script>
+</body>
+</html>
