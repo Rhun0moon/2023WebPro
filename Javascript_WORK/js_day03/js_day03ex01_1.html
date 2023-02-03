@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>if ~ else</title>
+</head>
+<body>
+    <script>
+        // if ~ else
+        // undefinde, null, NaN 등은 false와 동일하다.
+        if(true){
+            document.write("true임둥");
+        }else{
+            document.write("false임둥");
+        }
+
+        // propt로 입력 받은 데이터의 타입은 string
+        // number 형식으로 사용하기 위해서는 parseInt(), Number()로 형변환을 해야함
+        // Number()로 형변환하면 NaN일 경우 0을 반환한다.
+        const age = Number(prompt("나이 입력 :")); // 팝업창으로 데이터 입력
+        document.write(`<br /><h1>당신의 나이는 ${age}입니다.</h1>`);
+        if(age > 19){
+            // document.write("그대는 성인이라요");
+            var isAdult = "성인";
+        }else{
+            // document.write("그대는 아직 아가라요");
+            var isAdult = "아가";
+        }
+        document.write(`<br />그대는 ${isAdult}입니다.`)
+
+    </script>    
+</body>
+</html>

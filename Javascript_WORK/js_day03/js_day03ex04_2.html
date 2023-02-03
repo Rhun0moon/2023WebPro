@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또번호생성기</title>
+    <style>
+        div#lottoArea > div{
+            width: 40px; height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            border: 1px solid lightcoral;
+            text-align: center;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>로또번호생성기</h1>
+    <fieldset>
+        <legend>Lotto</legend>
+        <div id="lottoArea">
+            <div>0</div>
+            <div>0</div>
+            <div>0</div>
+            <div>0</div>
+            <div>0</div>
+            <div>0</div>
+        </div>
+    </fieldset>
+    <button id="genBtn">번호 생성</button>
+
+    <script>
+        const colors = ["red", "yellow", "green", "orange", "skyblue", "pink"];
+        const ballList = document.querySelectorAll("#lottoArea > div");
+        const genBtn = document.getElementById("getnBtn");
+
+        ballList.forEach((item, index)=>{
+            item.style.backgroundColor = colors[index];
+            // console.log("HELLO");
+        });
+
+        // 1부터 45까지 중복되지 않는 난수 6개 생성
+
+        /*
+        const lotto = [];
+        for(var i=0; i<6; i++){
+            var temp = 1 + Math.floor(Math.random()*45);            
+            if (!lotto.includes(temp)){ lotto[i] = temp; }
+            else{ i--; }
+        }
+
+        lotto.sort(function(a, b) {
+            return a - b; 
+        });
+
+        ballList.forEach((item, index)=>{
+            item.innerHTML = lotto[index];
+        });
+        */
+
+        // 교수님
+        function lottoFn() {
+            const lotto = new Set();
+            // Set 구조를 활용해서 중복체크
+            for(; lotto.size < 6 ;){
+                // let num = 1 + Math.floor(Math.random()*45); 
+                // console.log(num, lotto.size);
+                lotto.add( 1 + Math.floor(Math.random()*45) );
+            }
+
+            // Set 구조에는 index가 없다. 그래서 정렬이 안됨
+            let newLotto = [];
+
+            lotto.forEach((value)=>{
+                newLotto.push(value);
+            });
+
+            newLotto.sort(function(a, b){return a-b});
+            newLotto.forEach((value, index)=>{
+                ballList[index].innerHTML = value;
+            });
+
+            /*
+            let i = 0;
+            lotto.forEach((value)=>{
+                ballList[i++].innerHTML = value;
+            });
+            */
+        };
+        
+        genBtn.addEventListener('click', (event) => {
+            lottoFn();
+        });
+    </script>
+</body>
+</html>

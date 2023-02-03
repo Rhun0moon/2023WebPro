@@ -8,8 +8,8 @@
     <style>
         div.gameBox {
             border: 1px solid orange;
-            width : 308px;
-            height: 108px;
+            width : 300px;
+            height: 100px;
             overflow: hidden;
         }
         div.gameBox ul {
@@ -22,53 +22,64 @@
             height: 100px;
             border: 1px solid black;
             list-style: none;
+            box-sizing: border-box;
         }
     </style>
 </head>
 <body>
     <h1>햄버거 하우스 게임</h1>
+    <p><button id="playBtn">Play</button></p>
     <div class="gameBox"></div>
 
     <script>
         function MakeUl(gameBox) {
+            this.SIZE = 5;
             this.init = function() {
+                // li 배경 색을 준비한다.
+                let colors = ["lightblue", "lightcoral", "lightgreen", "lightsalmon", "lightpink"];
                 this.ulTag = document.createElement("ul");
-                for(var i=1; i<=10; i++) {
+                for(var i=1; i<=this.SIZE; i++) {
                     var li = document.createElement("li");
+                    li.style.backgroundColor = colors[i%5];
                     li.innerText = i;
                     this.ulTag.appendChild(li);
                 }
                 gameBox.appendChild(this.ulTag);
 
                 // 게임 실행
-                this.play();
+                //this.play();
+
+                // 체인 형태로 만들기 위해 객체 자신을 반환.
+                return this;
             }
 
             this.play = function() {
                 this.ulTag.style.position = "relative";
                 var y = 0;
-                var stop = Math.abs(Math.floor(Math.random()*5 ) );
-                console.log("그만");
-                var cnt = 0;
+                var end = 10 + Math.floor(Math.random()*20);
+                end *= 100;
                 var refInterval = setInterval(() => {
-                    y -= 10;
-                    if(y <= -1000) {
-                        y = 0;
-                        console.log(cnt, stop);
-                        if(cnt >= stop) {
-                            clearTimeout(refInterval);
-                        }
-                        cnt++;
+                    y += 10;
+                    if(y >= end) {
+                        clearTimeout(refInterval);
                     }
-                    this.ulTag.style.top = y + "px";
+                    this.ulTag.style.top = -(y%(this.SIZE*100)) + "px";
                 }, 10);
             }
-        }
+        } // end of MakeUl ...
 
         var gameBox = document.querySelector(".gameBox");
-        new MakeUl(gameBox).init();
-        new MakeUl(gameBox).init();
-        new MakeUl(gameBox).init();
+        var ul01 = new MakeUl(gameBox).init();
+        var ul02 = new MakeUl(gameBox).init();
+        var ul03 = new MakeUl(gameBox).init();
+
+        var playBtn = document.getElementById("playBtn");
+        playBtn.addEventListener('click', (event) => {
+            console.log("click play btn")
+            ul01.play();
+            ul02.play();
+            ul03.play();
+        });
     </script>
 </body>
 </html>
