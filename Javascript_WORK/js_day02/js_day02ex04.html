@@ -7,6 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        var myObj = {
+            name: "홍길동",
+            email: "hong@naver.com", 
+            showInfo: function(){
+                var a = "a 변수의 값"; // window에 추가되지 않음 -> showInfo 함수에서만 사용됨
+                let b = "b 변수의 값"; // window에 추가되지 않음 -> 블럭 안에서만 사용 됨
+                this.c = "c 변수의 값"; // window에 추가됨 -> myObj 객체의 멤버
+                console.log(this.name, this.email);
+                console.log("myObj 내의 this : ", this);
+                console.log(window);
+            }
+        };
+
+        myObj['showInfo']();
+        console.log(window);
+    </script>
 </body>
 </html>

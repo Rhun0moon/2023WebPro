@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div#box{
+            border: 1px solid black;
+            position: relative;
+            width: 100px; height: 100px;
+            background-color: lightpink;
+            transition: all .03s;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <button id="playBtn">Play</button>
+    <div id="box">BOX</div>
+
+    <script>
+        var playBtn = document.querySelector("#playBtn");
+        var move = function( callback ){
+            var box = document.querySelector("div#box");
+            box.callback = callback;
+            // var boxStyle = getComputedStyle(box);
+            var x = parseInt(getComputedStyle(box).left);
+
+            /*
+            var x = parseInt(boxStyle.left);
+            var y = boxStyle.top;
+            var w = boxStyle.width;
+            var h = boxStyle.height;
+
+            console.log(box.offsetWidth);
+            console.log(x, y, w, h);
+            */
+
+            var refInterval = setInterval(function(){
+                x += 10;
+                if(x>=400){
+                    x=400;
+                    clearInterval(refInterval);
+                    // 모든 작업 종료 후 실행 
+                    // callback(box);
+                    box.callback(box); // callback == move 호출 시 익명함수
+                }
+                // console.log(x);
+                box.style.left = x+"px";
+            }, 30);
+        };
+
+        // callback(); 하면 실행되는 부분
+        playBtn.onclick = function(event){
+            move(function(target){
+                console.log(this); // 원래는 window인데 box.callback = callback;로 인해서 target이랑 같아짐
+                console.log(target);
+                console.log(this == target);
+
+
+                alert("실행 완료!");
+                box.style.backgroundColor = "yellow";
+            });
+        };
+
+        // playBtn.onclick = move;
+    </script>
+</body>
+</html>
