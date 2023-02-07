@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Array.prototype.printConsole = function(){
+            // 콘솔에 출력
+        }
+        Array.prototype.printWrite = function(){
+            // ul 로 문서에 출력
+            var html = "<ul>";
+            this.forEach(function(item, idx){
+                html += "<li>"+item+"</li>";
+            });
+            html += "</ul>"
+            document.write(html);
+        }
+
+        var arr = ['서울', '인천', '강남', '경북', '대구', '포항'];
+        arr.printWrite();
+        arr.printConsole();
+    </script>
+</body>
+</html>
