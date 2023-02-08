@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsDAy05Ex02_2</title>
+</head>
+<body>
+    <h1>OMG :)</h1>
+    <div id="demo">
+        Ajax 기술로 person_data.json 파일로 로드한다.
+    </div>
+    <p><button id="loadBtn">LoadBtn</button></p>
+
+    <script>
+        var demo = document.getElementById("demo");
+        var loadBtn = document.getElementById("loadBtn");
+        loadBtn.addEventListener("click", (event)=>{
+            alert("load button 클릭!");
+            // xhr 을 이용하여 Ajax 처리
+            const xhr = new XMLHttpRequest();
+
+            // 요청 결과 전송 후 처리하는 이벤트 핸들러
+            xhr.onload = (event) => {
+                //let resTxt = xhr.responseText;
+                //console.log(resText);
+                //let jsonData = JSON.parse(xhr.responseText);
+                //console.log(jsonData);
+                let psersonList = JSON.parse(xhr.responseText)["personList"];
+                console.log(psersonList);
+            };
+            
+            // 요청 페이지 설정
+            //xhr.open("GET or POST", "주소", "파라미터");
+            xhr.open("GET", "http://localhost:3000/js/person_data.json", true); // "/"는 같은 서버에 있다는 것임
+
+            // 실행 명령
+            xhr.send();
+
+        });
+    </script>
+</body>
+</html>

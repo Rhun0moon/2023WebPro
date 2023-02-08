@@ -1,0 +1,9 @@
+{
+    "personList":[
+        {"no":1, "name": "김길동", "email": "kim@person.com", "phone":"010-1111-2222"},
+        {"no":1, "name": "이길동", "email": "lee@person.com", "phone":"010-1111-2222"},
+        {"no":1, "name": "박길동", "email": "park@person.com", "phone":"010-1111-2222"},
+        {"no":1, "name": "전길동", "email": "junn@person.com", "phone":"010-1111-2222"},
+        {"no":1, "name": "정길동", "email": "jung@person.com", "phone":"010-1111-2222"}
+    ]
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsDAy05Ex01_1</title>
+</head>
+<body>
+    <h1>localStorage 실습</h1>
+    
+    <script>        
+        // window.localStorage.setItem(key, value)
+        // window 생략가능
+        localStorage.setItem("user", "Hong-Gildong");
+        
+        var area = ["부산", "경산", "광주", "서울"];
+        localStorage.setItem("area", area);
+
+        var user2 = localStorage.getItem("user");
+        document.write(`<h2>User2 : ${user2}</h2>`);
+        // 삭제
+        localStorage.removeItem();
+
+        var area2 = localStorage.getItem("area");
+        for(let item of area2){
+            document.write(`<p>area : ${item}</p>`);
+        }
+    </script>
+</body>
+</html>
