@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_day01ex01_2</title>
+    <!--jQuery CDN -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script>
+    </script>
+</head>
+<body>
+    <button id="clickBtn">clickBtn</button>
+
+    <script>
+        const clickBtn = document.getElementById("clickBtn");
+        console.log(clickBtn);
+
+        // DOM을 제이커리에 넣으면 제이커리 객체로 바뀐다.
+        const $clickBtn = $("clickBtn");
+        console.log($clickBtn);
+
+        // 제이커리 객체를 DOM 객체로 변환(꺼낸다)
+        const btn = $(clickBtn)[0];
+        console.log(btn);
+
+        // 제이커리와 기존 DOM을 서로 바꿔가면서 사용 가능
+    </script>
+</body>
+</html>

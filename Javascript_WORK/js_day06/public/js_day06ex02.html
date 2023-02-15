@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>업로드 파일 미리보기 예제</h1>
+    <!-- 중요 : method="post" enctype="multipart/form-doto" 속성 필수 -->
+    <form id="inputForm" method="post" enctype="multipart/form-data"> <!-- action="/person/input" -->
+        성명: <input type="text" name="name" value="홍길동"><br/>
+        이메일: <input type="text" name="email" value="@naver.com"><br/>
+        핸드폰: <input type="text" name="phone" value="010-1111-2222"><br/>
+        사진: <input type="file" name="photo" id="photo" multiple accept="image/gif, image/jpge, image/png"><br/>
+        <!-- multiple: 파일 여러개 선택 -->
+        <input type="submit" value="전송">
+    </form>
+    <div id="preview">사진 미리보기</div>
+
+    <script>
+        var inputForm = document.querySelector("#inputForm");
+        var photo = document.querySelector("#photo");
+        var preview = document.querySelector("#preview");
+
+        inputForm.addEventListener("submit", (event)=>{
+            event.preventDefault();
+
+            // ajax로 전송하기
+            let formData = new FormData(inputForm);
+            let xhr = new XMLHttpRequest();
+
+            xhr.onload = (event)=>{
+                var resText = event.target.responseText;
+                console.log("전송 완료 - 결과 확인 : "+resText);
+            };
+
+            xhr.open("POST", "/person/input", true);
+            // Data가 FormData로 바뀌었으므로
+            // "Content-Type", 'multipart/form-data" 쓰지 않아야 한다. 
+            // xhr.setRequestHeader("Content-Type", "multipart/form-data");
+            // 파일 전송이 아닌 POST 전송 할 경우에는 다음과 같이 사용.
+            // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send(formData);
+        });
+
+        photo.addEventListener("change", (event)=>{
+            let input = event.target;
+            // FileReader - 비동기 형태로 파일을 읽어오는 객체.
+            preview.innerHTML = "";
+            for(var i=0; i<input.files.length; i++) {
+                if(input.files && input.files[i]) {
+                    let reader = new FileReader();
+
+                    // 파일을 모두 읽으면 
+                    // 미리보기에 된 파일 제거 기능
+                    reader.addEventListener("load", (e)=> {
+                        let readImg = e.target.result;
+                        preview.innerHTML += `<img src="${readImg}" width="100"/>&nbsp;`;
+                    });
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

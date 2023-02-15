@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'NanumSquareNeo-Variable';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+*{
+    font-family: 'NanumSquareNeo-Variable';
+    margin-left: 5px;
+    margin-right: 5px;
+}
+div, p, input{
+    font-size: 16px;
+}
+button{
+    font-size: 14px;
+}
+
+input[type="text"]{
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgb(233, 233, 233);
+
+}
+input[disabled]{
+    border: 1px;
+    background-color: white;
+}
+input[readOnly]{
+    border: 1px;
+    background-color: white;
+}
+input.done{
+    text-decoration: line-through;
+}
+button{
+    background-color: #7fb1bf;
+    border: 0;
+    border-radius: 10px;
+    padding: 5px 10px; margin: 2px;
+    text-align: center;
+    color: white;
+}
+button.hidden{
+    visibility: hidden;
+}
+button.visible{
+    visibility: visible;
+}

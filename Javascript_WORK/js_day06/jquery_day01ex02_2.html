@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_day01ex01_2</title>
+    <!--jQuery CDN -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script>
+    </script>
+</head>
+<body>
+    <ul>
+        <li>대구</li>
+        <li>경남</li>
+        <li>충주</li>
+        <li>강남</li>
+        <li>울릉도</li>
+    </ul>
+
+    <script>
+        var colors = ["red", "yellow", "pink", "orange", "lightgreen"];
+
+        console.dir($('ul>li'));
+        $('ul>li').click(function(item, index, x){
+            //console.log(item, index, x);
+        });
+
+        /* 자바스크립트 버전
+        var a = $("ul>li");
+        for(var i=0; i<a.length; i++){
+            $(a[i]).css("background-color", colors[i]);
+        }
+        // $("ul>li").css("bockground-color", "red");
+        */
+
+        /* 제이커리 버전 */
+        $('ul>li').css("background-color", function(index, fontColor){
+            return colors[index];
+        });
+    </script>
+</body>
+</html>

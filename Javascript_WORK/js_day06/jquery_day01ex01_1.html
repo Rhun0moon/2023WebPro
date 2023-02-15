@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery_day01ex01_1</title>
+    <!--jQuery CDN -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script>
+        // console.dir( $(document) );
+        // console.log( document );
+
+        // jQuery의 진입점 : 4가지 방법이 있음
+        // 문서를 모두 로드하면 함수를 실행
+        //ver1
+        //$(document).on("ready", function(){ alert("Hello"); });
+        //ver2
+        //$(document).ready(function(){ alert("Hello"); });
+        //ver3
+        //jQuery(function(){ alert("Hello"); });
+        //ver4
+        //$(function(){ alert("Hello"); });
+
+        $(document).ready(function(){
+        $(document).ready(function(){
+            $('#clickBtn').on("click", function(event){
+                alert("Hello 제이커리 버전");
+                
+            });
+            document.getElementById("clickBtn").addEventListener("click", function(){
+                alert("Hello 자바스크립트 버전");
+            })
+        });
+    </script>
+</head>
+<body>
+    <button id="clickBtn">Click</button>
+</body>
+</html>

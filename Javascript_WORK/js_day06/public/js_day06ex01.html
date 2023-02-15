@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>업로드 파일 미리보기 예제</h1>
+    <!-- 중요 : method="post" enctype="multipart/form-doto" 속성 필수 -->
+    <form id="inputForm" action="/person/input" method="post" enctype="multipart/form-data">
+        성명: <input type="text" name="name" value="홍길동"><br/>
+        이메일: <input type="text" name="email" value="@naver.com"><br/>
+        핸드폰: <input type="text" name="phone" value="010-1111-2222"><br/>
+        사진: <input type="file" name="photo" id="photo" multiple accept="image/gif, image/jpge, image/png"><br/>
+        <!-- multiple: 파일 여러개 선택 -->
+        <input type="submit" value="전송">
+    </form>
+    <div id="preview">사진 미리보기</div>
+
+    <script>
+        var inputForm = document.querySelector("#inputForm");
+        var photo = document.querySelector("#photo");
+        var preview = document.querySelector("#preview");
+
+        photo.addEventListener("change", (event)=>{
+            // console.log(event.target);
+            let input = event.target; 
+            console.dir(input.files);
+
+            // FileReader - 비동기 형태로 파일을 읽어오는 객체
+            /* 하나 미리보기
+            if(input.files && input.files[0]){
+                let reader = new FileReader();// console.dir(reader);
+
+                // 파일을 모두 읽으면 
+                reader.addEventListener("load", (e)=>{
+                    let readImg = e.target.result; // console.log(e.target.result); //이미지를 코드로?
+                    preview.innerHTML =` <img src="${readImg}" width="200px" />`
+                });
+
+                reader.readAsDataURL(input.files[0]);
+            }
+            */
+           /* 여러개 미리보기 */
+           preview.innerHTML = "";
+            for(var i=0; i<input.files.length; i++){
+                if(input.files && input.files[i]){
+                    let reader = new FileReader();
+                    reader.addEventListener("load", (e)=>{
+                        let readImg = e.target.result; // console.log(e.target.result); //이미지를 코드로?
+                        preview.innerHTML +=` <img src="${readImg}" width="100px" />&nbsp;`
+                    });
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
